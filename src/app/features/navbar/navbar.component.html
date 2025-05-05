@@ -8,8 +8,16 @@
         </ul>
         <div class="d-flex">
             <div class="d-flex" role="search">
-                <input type="search" class="form-control me-2" placeholder="Rechercher">
+                <input [(ngModel)]="searchInput" type="search" class="form-control me-2" placeholder="Rechercher">
+                <button (click)="search()">Rechercher</button>
             </div>
         </div>
+    
     </div>
 </nav>
+<div class="row">
+    <div class="col"></div>
+    <div class="col">
+        <a [title]="'Derniere mise à jour: ' + (lastUpdate| date:'fullDate') ">Voir les détails</a>
+    </div>
+</div>
