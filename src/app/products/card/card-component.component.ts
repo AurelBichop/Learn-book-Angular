@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Product } from '../../interfaces/product.interface';
 
 @Component({
@@ -10,7 +10,7 @@ import { Product } from '../../interfaces/product.interface';
         <div class="product-name text-center">{{product.title}}</div>
         <button class="btn btn-primary">Ajouter au panier</button>
         @if (userIsAdmin) {
-          <button class="btn btn-danger">Supprimer</button>
+          <button class="btn btn-danger" (click)="handleProduct()">Supprimer</button>
         }
       </div>
     </div>
@@ -20,4 +20,9 @@ import { Product } from '../../interfaces/product.interface';
 export class CardComponentComponent {
   userIsAdmin :boolean = true;
   @Input() product: Product = {} as Product;
+  @Output() deleteProduct = new EventEmitter<number>();
+
+  handleProduct(){
+    this.deleteProduct.emit(this.product.id);
+  }
 }

@@ -9,7 +9,7 @@ import { CardComponentComponent } from "./card/card-component.component";
       <div>
       @for (prod of products ; track prod.id)
         {
-          <app-card [product]="prod"></app-card>>
+          <app-card [product]="prod" (deleteProduct)="removeProduct($event)"></app-card>>
         }
         @empty {
           <div class="text-center">Aucun produit trouvé</div>
@@ -46,4 +46,10 @@ export class ProductsComponentComponent {
       category: 'Cat 2'
     }
   ]
+
+  removeProduct(id: number){
+    console.log(id)
+    
+    this.products = this.products.filter(product=> product.id !== id);
+  }
 }
