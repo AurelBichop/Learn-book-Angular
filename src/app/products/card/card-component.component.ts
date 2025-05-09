@@ -1,13 +1,13 @@
-import { Component } from '@angular/core';
-import { ProductsComponentComponent } from "../products-component/products-component.component";
+import { Component, Input } from '@angular/core';
+import { Product } from '../../interfaces/product.interface';
 
 @Component({
   selector: 'app-card',
-  imports: [ProductsComponentComponent],
+  imports: [],
   template: `
     <div class="card d-flex flex-column align-items-center">
       <div>
-        <app-products />
+        <div class="product-name text-center">{{product.title}}</div>
         <button class="btn btn-primary">Ajouter au panier</button>
         @if (userIsAdmin) {
           <button class="btn btn-danger">Supprimer</button>
@@ -19,4 +19,5 @@ import { ProductsComponentComponent } from "../products-component/products-compo
 })
 export class CardComponentComponent {
   userIsAdmin :boolean = true;
+  @Input() product: Product = {} as Product;
 }

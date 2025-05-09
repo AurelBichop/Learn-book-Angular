@@ -1,18 +1,15 @@
 import { Component } from '@angular/core';
+import { CardComponentComponent } from "./card/card-component.component";
 
 @Component({
   selector: 'app-products',
-  imports: [],
+  imports: [CardComponentComponent],
   template: `
     <div class="products">
       <div>
-      @for (product of products ; track product.id)
+      @for (prod of products ; track prod.id)
         {
-          <span>{{$index}} - </span>
-          <div class="product-name text-center">{{product.title}}</div>
-          <div class="card-img">
-            <img [src]="product.image" alt="">
-          </div> 
+          <app-card [product]="prod"></app-card>>
         }
         @empty {
           <div class="text-center">Aucun produit trouvé</div>
